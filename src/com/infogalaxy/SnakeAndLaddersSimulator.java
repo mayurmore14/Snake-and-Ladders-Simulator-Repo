@@ -15,7 +15,7 @@ public class SnakeAndLaddersSimulator {
     //UC-2-Rollling the Dice to Get No Between 1 to 6
     public void rollsDice() {
         //UC-4-Repeate Till the Player Reaches Winning Position 100
-        while (position <= 100) {
+        while (position != 100) {
             dice = (int) ((Math.random() * (7 - 1)) + 1);
             System.out.println("Dice Number is = " + dice);
 
@@ -30,6 +30,11 @@ public class SnakeAndLaddersSimulator {
                 case Constants.LADDER:
                     System.out.println("HURRAY..! U Got Ladder..");
                     position = position + dice;
+                    //UC-5-Ensure the Player Get Exact Winning Position 100
+                    if (position > 100) {
+                        System.out.println("Player Position is Out of Board");
+                        position = position - dice;
+                    }
                     break;
                 case Constants.SNAKE:
                     if (position < 0) {
